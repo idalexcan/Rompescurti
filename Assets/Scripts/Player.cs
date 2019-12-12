@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
         if (enemyCloser != null && enemyCloser.GetComponent<Enemy>().canShowText)
         {
-            GameManager.instance.advice.text = "te estan detectando";
+            GameManager.instance.advice.text = "corré que mirá eso";
         }
         else
             GameManager.instance.advice.text = "";

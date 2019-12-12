@@ -5,16 +5,22 @@ using UnityEngine;
 public sealed class FPSMove : MonoBehaviour
 {
 
-    public GameObject cam, camPoint, head;//se crea instancia publica para usar una variable de otra clase
+    public GameObject cam, head, winText;//se crea instancia publica para usar una variable de otra clase
 
     public float velocity = 7f;
 
+    private void Awake()
+    {
+        winText=GameObject.Find("Win");
+        winText.SetActive(false);
+    }
+
     void Update()
     {
-        float XRot = Input.GetAxisRaw("Mouse X")*3;
-        float YRot = Input.GetAxisRaw("Mouse Y")*3;
+        float XRot = Input.GetAxisRaw("Mouse X") * 3;
+        float YRot = Input.GetAxisRaw("Mouse Y") * 3;
         transform.Rotate(new Vector3(0, XRot, 0));
-        head.transform.Rotate(new Vector3(YRot*-1, 0, 0));
+        head.transform.Rotate(new Vector3(YRot * -1, 0, 0));
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * velocity * Time.deltaTime;
@@ -30,6 +36,14 @@ public sealed class FPSMove : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.position -= transform.right * velocity * Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name=="End")
+        {
+            winText.SetActive(true);
         }
     }
 }
