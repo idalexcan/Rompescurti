@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         enemiTransform = transform;
-        warning = transform.GetChild(1).gameObject;
-        detect = transform.GetChild(0).gameObject;
+        // warning = transform.GetChild(1).gameObject;
+        // detect = transform.GetChild(0).gameObject;
         canShowText = false;
     }
 
     void Start()
     {
-        playerTransform = GameManager.instance.playerTransform;
+        //playerTransform = GameManager.instance.playerTransform;
     }
 
     void Update()
@@ -37,31 +37,31 @@ public class Enemy : MonoBehaviour
 
     private void DetectPlayer(bool isLookinThePlayer)
     {
-        if (isLookinThePlayer)
-        {
-            warning.SetActive(true);
-            detect.SetActive(false);
-            canShowText = true;
-            if (timeOnSight <= 3)
-            {
-                timeOnSight += Time.deltaTime;
-            }
-            if (!(timeOnSight >= 3)) return;
-            warning.SetActive(false);
-            detect.SetActive(true);
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            if (timeOnSight > 0)
-            {
-                timeOnSight -= Time.deltaTime;
-            }
-            if (!(timeOnSight <= 0)) return;
-            warning.SetActive(false);
-            detect.SetActive(false);
-            canShowText = false;
-        }
+        // if (isLookinThePlayer)
+        // {
+        //     warning.SetActive(true);
+        //     detect.SetActive(false);
+        //     canShowText = true;
+        //     if (timeOnSight <= 3)
+        //     {
+        //         timeOnSight += Time.deltaTime;
+        //     }
+        //     if (!(timeOnSight >= 3)) return;
+        //     warning.SetActive(false);
+        //     detect.SetActive(true);
+        //     SceneManager.LoadScene(0);
+        // }
+        // else
+        // {
+        //     if (timeOnSight > 0)
+        //     {
+        //         timeOnSight -= Time.deltaTime;
+        //     }
+        //     if (!(timeOnSight <= 0)) return;
+        //     warning.SetActive(false);
+        //     detect.SetActive(false);
+        //     canShowText = false;
+        // }
     }
 
     private bool IsLookinThePlayer(Vector3 playerPosition)

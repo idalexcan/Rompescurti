@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        //winText.SetActive(false);
-
+        
         foreach (var item in GameObject.FindGameObjectsWithTag("Obstaacle"))
         {
             item.transform.localScale = new Vector3(item.transform.localScale.x, 5, item.transform.localScale.z);
